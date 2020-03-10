@@ -19,10 +19,20 @@
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Content Remove="$(SpaRoot)**" />
-    <None Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+    <None Remove="ClientApp\src\app\events\events-list.ts" />
+    <None Remove="ClientApp\src\app\events\events-thumbnail.component.ts" />
+    <None Remove="ClientApp\src\app\events\events-listcomponent.html" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ClientApp\src\assets\images\" />
+    <Folder Include="ClientApp\src\app\events\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\events\events-list.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\events\events-thumbnailcomponent.ts" />
+  </ItemGroup>
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">
