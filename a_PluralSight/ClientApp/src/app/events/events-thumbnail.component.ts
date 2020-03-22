@@ -8,11 +8,12 @@ import { EventEmitter } from 'events';
 @Component({
   selector: 'events-thumbnail',
   template:
-    `<div>
+  //routerLink makes the element a link
+    `<div [routerLink]="['/events', event.id]">
     <h1 class="pad-left">{{event.name}} </h1>
     <hr>
     <div class="well">
-    <h4>{{event.date}}</h4>
+    <h4 [ngClass]="getStartTimeClass()">{{event.date}}</h4>
     <div [ngSwitch]="event?.time" [ngClass]="{green: event.time === '8:00 am', bold: event.time === '10:00 am'}">
     <span *ngSwitchCase="'8:00 am'">{{event.time}} Early Start</span>
     <span *ngSwitchCase="'10:00 am'">{{event.time}} Late Start</span>
@@ -25,6 +26,7 @@ import { EventEmitter } from 'events';
       .well { color: red}
       .green { color: green !important}
       .bold {color: yellow}
+      .pink {color: pink}
       `]
 
 })
@@ -37,6 +39,13 @@ export class EventsThumbnailComponent {
   logFoo() {
     console.log("foo")
   }
+  getStartTimeClass(): any {
+    const isEarly = this.event && this.event.time === '8:00 am'
+    return {pink: isEarly, bold: isEarly}
+    // you can also return a string or array
+  }
 
 
 }
+
+// if you do style and ngStyle. The ng will be added on top of regular

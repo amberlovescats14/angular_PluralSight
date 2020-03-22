@@ -1,3 +1,7 @@
+import { EventRouteActivator } from './events/event-details/event-route-activator.service';
+import { Error404Component } from './errors/404.component';
+import { CreateEventComponent } from './events/create-event.component';
+import { appRoutes } from './routes';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -9,8 +13,11 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
-import { EventsListComponent } from './events/events-list';
-import { EventsThumbnailComponent } from './events/events-thumbnailcomponent'
+import { EventsListComponent } from './events/events-list.component';
+import { EventsThumbnailComponent } from './events/events-thumbnail.component'
+import { EventService } from './events/shared/events.service'
+import { ToastrService } from './common/toastr.service';
+import { EventDetailsComponent } from './events/event-details/event-details.component';
 
 
 @NgModule({
@@ -21,21 +28,19 @@ import { EventsThumbnailComponent } from './events/events-thumbnailcomponent'
     CounterComponent,
     FetchDataComponent,
     EventsListComponent,
-    EventsThumbnailComponent
+    EventsThumbnailComponent,
+    EventDetailsComponent,
+    CreateEventComponent,
+    Error404Component
     
   ],
+  // browser router
   imports: [
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-    HttpClientModule,
-    FormsModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-    ])
+    BrowserModule,
+    RouterModule.forRoot(appRoutes)
   ],
-  //services
-  providers: [],
+  //services should be imported and listed as providers
+  providers: [EventService, ToastrService,EventRouteActivator],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
