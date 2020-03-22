@@ -40,7 +40,23 @@ import { EventDetailsComponent } from './events/event-details/event-details.comp
     RouterModule.forRoot(appRoutes)
   ],
   //services should be imported and listed as providers
-  providers: [EventService, ToastrService,EventRouteActivator],
+  providers: [
+    EventService,
+     ToastrService,
+     EventRouteActivator,
+     //! This is a route gaurd
+     {
+       provide: 'canDeactivateCreateEvent',
+       useValue: checkDirtyState
+     }
+     ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+//!checking dirty state. takes in component
+export function checkDirtyState(component: CreateEventComponent){
+  if(component.isDirty)
+    return window.confirm('You have not saved this event, do you really want to cancel?')
+  return true;
+}
