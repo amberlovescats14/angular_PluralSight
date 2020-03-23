@@ -1,14 +1,23 @@
 <ul class="nav flex-column">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
+    <a class="nav-link" href="#"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact:true}">Active</a>
   </li>
   <li class="nav-item">
-    <a [routerLink]="['/events']">All Events</a>
+    <a [routerLink]="['/events']"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact:true}">All Events</a>
   </li>
   <li class="nav-item">
-    <a [routerLink]="['/events/new']">Link</a>
+    <a [routerLink]="['/events/new']"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact:true}">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    <a class="nav-link"
+      [routerLink]="['user/profile']"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact:true}">Welcome Amber</a>
   </li>
 </ul>
