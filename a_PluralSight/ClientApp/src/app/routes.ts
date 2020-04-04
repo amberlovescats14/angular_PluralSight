@@ -18,7 +18,8 @@ export const appRoutes:Routes = [
       canActivate: [EventRouteActivator]},
   {path: '404', component: Error404Component},
   {path: '', redirectTo: '/events', pathMatch: 'full'},
+  //!load children
   {path: 'user', loadChildren: './user/user.module#UserModule'}
 ]
 
-//can activate : whether a user can navigate to our route ((route gaurd))
+//!can activate : whether a user can navigate to our route ((route gaurd))

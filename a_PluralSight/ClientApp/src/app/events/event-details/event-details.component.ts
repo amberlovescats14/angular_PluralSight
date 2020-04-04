@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../shared/events.service';
 import { ActivatedRoute } from "@angular/router";
+import { IEvents } from './../shared/event.model';
 
 @Component({
   templateUrl: './event-details.component.html',
@@ -12,7 +13,7 @@ import { ActivatedRoute } from "@angular/router";
 
 export class EventDetailsComponent implements OnInit{
   //the id of the page will be in the url
-  event: any
+  event: IEvents
   
   constructor(
     private eventService: EventService,

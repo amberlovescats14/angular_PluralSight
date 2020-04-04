@@ -23,6 +23,7 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ToastrService } from './common/toastr.service';
+import { AuthService } from './user/auth.service';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { ToastrService } from './common/toastr.service';
        provide: 'canDeactivateCreateEvent',
        useValue: checkDirtyState
      },
-     EventListResolver
+     EventListResolver,
+     AuthService
      ],
   bootstrap: [AppComponent]
 })

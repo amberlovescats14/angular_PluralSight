@@ -1,3 +1,4 @@
+import { IEvents } from './shared/event.model';
 import { Component, Input, Output} from '@angular/core'
 import { EventEmitter } from 'events';
 
@@ -33,7 +34,7 @@ import { EventEmitter } from 'events';
 
 export class EventsThumbnailComponent {
 
-  @Input() event: any;
+  @Input() event: IEvents;
   someProperty: any = "some value";
 
   logFoo() {
