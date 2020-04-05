@@ -1,9 +1,9 @@
+import { NgModule } from '@angular/core';
 './events/event-details/event-route-activator.service';
 import { Error404Component } from './errors/404.component';
 import { appRoutes } from './routes';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -43,6 +43,8 @@ import { AuthService } from './user/auth.service';
   // browser router
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   //services should be imported and listed as providers

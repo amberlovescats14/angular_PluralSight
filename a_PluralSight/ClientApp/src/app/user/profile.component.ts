@@ -55,10 +55,10 @@ export class ProfileComponent implements OnInit {
      return this.lastName.invalid && this.lastName.touched
   }
 
+  //! https://angular.io/api/forms/Validators
   validationPatternCheck() : boolean {
       console.log(this.firstName.errors)
       return this.validateFirstName() && this.firstName.errors.pattern
-
   }
 
 
