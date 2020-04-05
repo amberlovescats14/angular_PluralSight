@@ -4,10 +4,17 @@ import { AuthService } from './auth.service';
 
 @Component({
   templateUrl: './login.component.html',
+  styles: [
+   ` em {
+      float: right;
+      color: red;
+    }`
+  ]
 })
 export class LoginComponent implements OnInit {
   username: string
   password: string
+  mouseoverLogin: boolean
 
   constructor(private authService: AuthService, private router: Router) { }
 

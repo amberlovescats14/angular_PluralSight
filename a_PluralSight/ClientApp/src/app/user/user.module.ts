@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router';
 import { userRoutes } from './user.routes'
@@ -10,6 +10,7 @@ import { LoginComponent } from './login.component';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(userRoutes)
   ],
   declarations: [

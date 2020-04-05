@@ -1,18 +1,65 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router';
+import { AuthService } from './auth.service';
+import { FormGroup, FormControl, Validators} from '@angular/forms';
 
 @Component({
-  template: `
-    <h1>Edit Your Profile</h1>
-    <hr>
-    <div class="col-md-6">
-      <h3>[Edit profile form will go here]</h3>
-      <br />
-      <br />
-      <button type="submit" class="btn btn-primary">Save</button>
-      <button type="button" class="btn btn-default">Cancel</button>
-    </div>
-  `,
+  templateUrl: './profile.component.html',
+  styles : [`
+    em {
+      float: right;
+      color: yellow
+    }
+    .error input {
+      background: red
+    }
+  `]
 })
-export class ProfileComponent {
-       
+
+//! REACTIVE FORMS
+export class ProfileComponent implements OnInit {
+  profileForm: FormGroup
+  firstName: FormControl
+  lastName: FormControl
+
+  constructor(private authService: AuthService, private router: Router){
+
+  }
+
+  ngOnInit(){
+    this.firstName = new FormControl(this.authService.currentUser.firstName, [Validators.required, Validators.pattern('^[a-zA-z].*')])
+    this.lastName = new FormControl(this.authService.currentUser.lastName, Validators.required)
+    this.profileForm = new FormGroup({
+        firstName: this.firstName,
+        lastName: this.lastName
+    })
+  }
+
+  cancel(){
+    this.router.navigate(['events'])
+  }
+
+  saveProfile(data){
+    if(this.profileForm.valid){
+      this.authService.updateCurrentUser(data.firstName, data.lastName)
+      this.router.navigate(['events'])
+    }
+  }
+
+  validateFirstName() : boolean {
+    // console.log(this.firstName.invalid)
+    return this.firstName.invalid && this.firstName.touched
+  }
+
+  validateLastName() : boolean {
+     return this.lastName.invalid && this.lastName.touched
+  }
+
+  validationPatternCheck() : boolean {
+      console.log(this.firstName.errors)
+      return this.validateFirstName() && this.firstName.errors.pattern
+
+  }
+
+
 }
