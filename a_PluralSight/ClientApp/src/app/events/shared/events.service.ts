@@ -21,6 +21,21 @@ export class EventService {
     return events.find(f => f.id == id);
   }
 
+  saveEvent(event: any) {
+    console.log(event);
+    event.id = 999
+    event.session = []
+    events.unshift(event)
+  }
+  saveEditEvent(event: any) {
+    let foundEvent = events.find(e => e.id == event.id)
+    foundEvent.name = event.name
+    foundEvent.date = event.date
+    foundEvent.time = event.time
+    foundEvent.price = event.price
+    foundEvent.location = event.location
+  }
+
   sanity(){
     console.log("testing")
   }

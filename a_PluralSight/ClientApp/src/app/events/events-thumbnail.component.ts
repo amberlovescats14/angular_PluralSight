@@ -18,7 +18,9 @@ import { EventEmitter } from 'events';
     <div [ngSwitch]="event?.time" [ngClass]="{green: event.time === '8:00 am', bold: event.time === '10:00 am'}">
     <span *ngSwitchCase="'8:00 am'">{{event.time}} Early Start</span>
     <span *ngSwitchCase="'10:00 am'">{{event.time}} Late Start</span>
-    <span *ngSwitchDefault>{{event.time}} Normal Start</span>
+    <span *ngSwitchDefault>{{event.time}} Normal Start</span> <br>
+    {{event.location.city}}
+    <a href="/events/edit/{{event.id}}"> <button>Edit</button></a>
     </div>
     </div>
       </div> `,

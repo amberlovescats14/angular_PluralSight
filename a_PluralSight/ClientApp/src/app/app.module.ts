@@ -13,6 +13,7 @@ import {
   EventService,
   EventDetailsComponent,
   CreateEventComponent,
+  EditEventComponent,
   EventRouteActivator,
   EventListResolver
 } from './events/index'
@@ -26,6 +27,7 @@ import { ToastrService } from './common/toastr.service';
 import { AuthService } from './user/auth.service';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +39,7 @@ import { AuthService } from './user/auth.service';
     EventsThumbnailComponent,
     EventDetailsComponent,
     CreateEventComponent,
+    EditEventComponent,
     Error404Component
     
   ],
@@ -45,6 +48,7 @@ import { AuthService } from './user/auth.service';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
   //services should be imported and listed as providers

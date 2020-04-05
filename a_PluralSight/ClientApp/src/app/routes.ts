@@ -6,11 +6,14 @@ import {
     EventDetailsComponent,
     CreateEventComponent,
     EventRouteActivator,
-    EventListResolver
+    EventListResolver,
+    EditEventComponent
 } from './events/index'
 
 export const appRoutes:Routes = [
   {path: 'events/new', component: CreateEventComponent,
+      canDeactivate: ['canDeactivateCreateEvent']},
+  {path: 'events/edit/:id', component: EditEventComponent,
       canDeactivate: ['canDeactivateCreateEvent']},
   {path: 'events', component: EventsListComponent,
       resolve: {events: EventListResolver},},
