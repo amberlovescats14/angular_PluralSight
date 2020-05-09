@@ -7,7 +7,8 @@ import {
     CreateEventComponent,
     EventRouteActivator,
     EventListResolver,
-    EditEventComponent
+    EditEventComponent,
+    CreateSessionComponent
 } from './events/index'
 
 export const appRoutes:Routes = [
@@ -15,6 +16,7 @@ export const appRoutes:Routes = [
       canDeactivate: ['canDeactivateCreateEvent']},
   {path: 'events/edit/:id', component: EditEventComponent,
       canDeactivate: ['canDeactivateCreateEvent']},
+  {path: 'events/session/:eventId', component: CreateSessionComponent},
   {path: 'events', component: EventsListComponent,
       resolve: {events: EventListResolver},},
   {path: 'events/:id', component: EventDetailsComponent,

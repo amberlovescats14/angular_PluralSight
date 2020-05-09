@@ -35,3 +35,7 @@ button {
 .toast-warning {
   background-color: #f89406;
 }
+
+.error {
+  background: red;
+}

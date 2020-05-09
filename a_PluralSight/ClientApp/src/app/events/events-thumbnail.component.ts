@@ -21,7 +21,12 @@ import { EventEmitter } from 'events';
     <span *ngSwitchDefault>{{event.time}} Normal Start</span> <br>
     {{event.location.city}}
     <a href="/events/edit/{{event.id}}"> <button>Edit</button></a>
+    <a href="/events/session/{{event.id}}"> <button>Add Session</button></a>
     </div>
+    <li *ngFor="let session of event.sessions">
+      {{session.name}} ::
+      {{session.presenter}}
+    </li>
     </div>
       </div> `,
   styles: [`
