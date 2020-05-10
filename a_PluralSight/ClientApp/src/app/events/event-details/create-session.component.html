@@ -3,6 +3,7 @@
 </div>
 <div class="col-md-6">
   <form autocomplete="off" [formGroup]="newSession" (ngSubmit)="saveSession(newSession.value)">
+    <a (click)="handleCancel()">Cancel</a>
     <div class="form-group">
       <label for="sessionName">Session Name:</label>
       <input formControlName="name" name="name"
@@ -34,7 +35,9 @@
     </div>
     <div class="form-group"
          [ngClass]="{'error': abstract?.errors?.restrictedWords}">
-      <em *ngIf="abstract.invalid && abstract.dirty">Invalid!! </em><br>
+      <em *ngIf="abstract.invalid && abstract.dirty">Invalid!!
+        {{abstract?.errors?.restrictedWords}}
+      </em><br>
       <label for="abstract">Abstract:</label>
       <textarea id="abstract" rows=3 class="form-control" placeholder="abstract..." formControlName="abstract" name="abstract"></textarea>
     </div>

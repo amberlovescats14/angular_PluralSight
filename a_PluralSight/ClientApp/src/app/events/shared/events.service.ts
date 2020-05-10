@@ -36,6 +36,10 @@ export class EventService {
     foundEvent.location = event.location
   }
 
+  updateEvent(event: IEvents){
+    console.log("test: ", event)
+  }
+
   sanity(){
     console.log("testing")
   }

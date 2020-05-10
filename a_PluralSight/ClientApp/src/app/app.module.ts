@@ -16,7 +16,8 @@ import {
   EditEventComponent,
   EventRouteActivator,
   EventListResolver,
-  CreateSessionComponent
+  CreateSessionComponent,
+  SessionListComponent
 } from './events/index'
 
 import { AppComponent } from './app.component';
@@ -42,7 +43,8 @@ import { AuthService } from './user/auth.service';
     CreateEventComponent,
     EditEventComponent,
     Error404Component,
-    CreateSessionComponent
+    CreateSessionComponent,
+    SessionListComponent
     
   ],
   // browser router

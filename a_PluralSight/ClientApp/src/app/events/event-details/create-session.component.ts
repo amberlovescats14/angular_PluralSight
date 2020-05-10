@@ -1,9 +1,10 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-import { ISession, EventService } from '../shared';
+import { ISession, EventService, restrictedWords } from '../shared';
 
 @Component({
+  selector: 'create-session',
   templateUrl: './create-session.component.html',
   styles: [`
     .error {
@@ -19,6 +20,9 @@ export class CreateSessionComponent implements OnInit {
   level: FormControl
   abstract: FormControl
 
+  @Output() saveNewSession = new EventEmitter();
+  @Output() cancelNewSession = new EventEmitter();
+
   event: any
 
   constructor(
@@ -33,7 +37,7 @@ export class CreateSessionComponent implements OnInit {
     this.presenter = new FormControl('', Validators.required)
     this.duration = new FormControl('', Validators.required)
     this.level = new FormControl('', Validators.required)
-    this.abstract = new FormControl('', [Validators.required, Validators.maxLength(200), this.restrictedWords(['foo', 'bar'])])
+    this.abstract = new FormControl('', [Validators.required, Validators.maxLength(200), restrictedWords(['foo', 'bar'])])
     this.newSession = new FormGroup({
       name: this.name,
       presenter: this.presenter,
@@ -47,15 +51,7 @@ export class CreateSessionComponent implements OnInit {
 
     this.event = this.eventService.getEventById(Number(reqID))
    }
-   //! custom validators // A function that returns a function
-   private restrictedWords = (wordsArr) => 
-            (control: FormControl): {[key:string]:any} => {
-              if(!wordsArr) return null;
-              let invalidWords = 
-              wordsArr.map(w => control.value.includes(w) ? w : null)
-              .filter(w => w != null)
-              return invalidWords.lenth > 0 ? {'restrictedWords': invalidWords.join(', ')} : null
-            }
+
 
    saveSession(data){
      let session: ISession = {
@@ -67,8 +63,12 @@ export class CreateSessionComponent implements OnInit {
        abstract: data.abstract,
        voters: []
      }
-     this.event.sessions.unshift(session)
-     this.router.navigate(['/events'])
+    //  this.event.sessions.unshift(session)
+    //  this.router.navigate(['/events'])
+    this.saveNewSession.emit(session)
+   }
 
+   handleCancel(){
+     this.cancelNewSession.emit(false)
    }
 }
