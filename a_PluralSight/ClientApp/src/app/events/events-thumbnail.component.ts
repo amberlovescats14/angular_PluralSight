@@ -11,7 +11,7 @@ import { EventEmitter } from 'events';
   template:
   //routerLink makes the element a link
     `<div [routerLink]="['/events', event.id]">
-    <h1 class="pad-left">{{event.name}} </h1>
+    <h1 class="pad-left">{{event?.name  | uppercase}}</h1>
     <hr>
     <div class="well">
     <h4 [ngClass]="getStartTimeClass()">{{event.date}}</h4>

@@ -1,7 +1,9 @@
+
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../shared/events.service';
 import { ActivatedRoute } from "@angular/router";
 import { IEvents, ISession } from './../shared/event.model';
+
 @Component({
   templateUrl: './event-details.component.html',
   styles: [`

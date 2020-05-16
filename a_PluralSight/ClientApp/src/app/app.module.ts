@@ -1,3 +1,4 @@
+import { CollapsableWellComponent } from './common/collapsable-well.component';
 import { NgModule } from '@angular/core';
 './events/event-details/event-route-activator.service';
 import { Error404Component } from './errors/404.component';
@@ -17,7 +18,8 @@ import {
   EventRouteActivator,
   EventListResolver,
   CreateSessionComponent,
-  SessionListComponent
+  SessionListComponent,
+  DurationPipe
 } from './events/index'
 
 import { AppComponent } from './app.component';
@@ -44,7 +46,9 @@ import { AuthService } from './user/auth.service';
     EditEventComponent,
     Error404Component,
     CreateSessionComponent,
-    SessionListComponent
+    SessionListComponent,
+    CollapsableWellComponent,
+    DurationPipe
     
   ],
   // browser router
