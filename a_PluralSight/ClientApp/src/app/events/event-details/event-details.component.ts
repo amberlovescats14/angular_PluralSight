@@ -17,6 +17,7 @@ export class EventDetailsComponent implements OnInit{
   addMode:boolean = false;
   //the id of the page will be in the url
   event: IEvents
+  filterBy: string = 'all'
   
   constructor(
     private eventService: EventService,
@@ -46,4 +47,7 @@ export class EventDetailsComponent implements OnInit{
   cancelSession(){
     this.addMode = false;
   }
+
+  
+
 }
